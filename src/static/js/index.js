@@ -15,7 +15,7 @@ const init = async () => {
 		video.addEventListener("loadedmetadata", playVideo);
 	} catch (e) {
 		console.log(e);
-		alert("Sorry! Someting went wrong! Please reload this page!");
+		alert("Allow Mini Room to use your camera!");
 	}
 };
 

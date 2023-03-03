@@ -2,4 +2,4 @@ Flask==2.2.3
 opencv-python-headless==4.7.0.72
 mediapipe==0.9.1.0
 numpy==1.24.2
-base64==1.2.3
+pybase64==1.2.3
