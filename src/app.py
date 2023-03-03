@@ -1,13 +1,10 @@
 from flask import *
 from flask_socketio import *
-from __init__ import create_app
+from middleware.__init__ import create_app
 from controllers.video import Video
 from models.facecam import Facecam
-from routes.index_route import index_api
 
 app = create_app()
-
-app.register_blueprint(index_api)
 
 socketio = SocketIO(app)
 

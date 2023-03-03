@@ -24,7 +24,6 @@ const playVideo = (e) => {
 	canvas.width = e.target.width;
 	canvas.height = e.target.height;
 	setInterval(drawOnCanvas, 1000 / 6);
-	removePreloader();
 };
 
 const drawOnCanvas = () => {
