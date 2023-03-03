@@ -1,0 +1,83 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- favicon -->
+		<link
+			rel="icon"
+			href="https://s3.amazonaws.com/www.miniroom.online/images/favicon.ico"
+			type="image/x-icon" />
+		<!-- Vendor CSS Files -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+			rel="stylesheet" />
+		<link
+			href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+			rel="stylesheet" />
+		<!-- Template Main CSS File -->
+		<link rel="stylesheet" href="../static/css/index.css" />
+		<title>Mini Room</title>
+	</head>
+	<body>
+		<header class="center">
+			<nav class="navbar navbar-grid">
+				<div>
+					<a class="navbar-brand center" href="https://miniroom.online/">
+						<img
+							src="https://s3.amazonaws.com/www.miniroom.online/images/logo.png"
+							alt=""
+							class="d-inline-block align-text-top" />
+						<span class="logo">Mini Room</span>
+					</a>
+				</div>
+				<h3 class="center">Hand Tracking Whiteboard</h3>
+			</nav>
+		</header>
+		<div id="whiteboardContainer" class="whiteboard-container">
+			<div class="palette-container">
+				<div class="palette center">
+					<div></div>
+				</div>
+				<div class="palette center">
+					<div class="red"></div>
+				</div>
+				<div class="palette center">
+					<div class="blue"></div>
+				</div>
+				<div class="palette center">
+					<div class="green"></div>
+				</div>
+				<div class="palette center">
+					<div class="eraser">
+						<img src="../static/images/eraser.png" />
+					</div>
+				</div>
+			</div>
+			<div class="shape-container">
+				<div class="shape center">
+					<div class="draw"><img src="../static/images/draw.png" /></div>
+				</div>
+				<div class="shape center">
+					<div class="circle"></div>
+				</div>
+				<div class="shape center">
+					<div class="rectangle"></div>
+				</div>
+				<div class="shape center">
+					<div class="line"></div>
+				</div>
+			</div>
+			<video id="myVideo" class="none" muted></video>
+			<canvas id="videoCanvas" class="none"></canvas>
+			<img id="whiteBoardImg"/>
+		</div>
+	</body>
+</html>
+<!-- Vendor JS Files -->
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+<!-- Template Main JS File -->
+<script type="module" src="../static/js/index.js"></script>
