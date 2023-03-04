@@ -71,13 +71,7 @@
 					<div class="line"></div>
 				</div>
 			</div>
-			<video id="myVideo" class="none" muted></video>
-			<canvas id="videoCanvas" class="none"></canvas>
-			<img id="whiteBoardImg"/>
+			<img id="whiteBoardImg" class="whiteboard-image" src="{{ url_for('index_api.videoFeed') }}"/>
 		</div>
 	</body>
 </html>
-<!-- Vendor JS Files -->
-<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-<!-- Template Main JS File -->
-<script type="module" src="../static/js/index.js"></script>

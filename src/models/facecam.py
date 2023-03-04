@@ -1,29 +1,22 @@
 import cv2
-import base64
 import numpy as np
 import globals
 
 class Facecam(object):  
     globals.initialize()
     
-    def __init__(self, frame):
-        self.frame = frame
+    def __init__(self):
+        self.video = cv2.VideoCapture(0)
         
-    def base64_to_image(self, base64_string):
-        # Extract the base64 encoded binary data from the input string
-        base64_data = base64_string.split(",")[1]
-        # Decode the base64 data to bytes
-        image_bytes = base64.b64decode(base64_data)
-        # Convert the bytes to numpy array
-        image_array = np.frombuffer(image_bytes, dtype=np.uint8)
-        # Decode the numpy array as an image using OpenCV
-        image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
-        return image
+    def __del__(self):
+        self.video.releast()
         
     def get_frame(self, detector, brushThickness, eraserThickness):
-        frame = self.base64_to_image(self.frame)
-        frame = cv2.resize(frame, (1280, 720))
-
+        self.video.set(3, 1280)
+        self.video.set(4, 720)
+        
+        ret, frame = self.video.read()
+        
         # Find Hand Landmarks
         frame = cv2.flip(frame, 1)
         frame = detector.findHands(frame)
@@ -165,6 +158,5 @@ class Facecam(object):
         imgInverse = cv2.cvtColor(imgInverse, cv2.COLOR_GRAY2BGR)
         frame = cv2.bitwise_and(frame, imgInverse)
         frame = cv2.bitwise_or(frame, globals.imgCanvas)
-        jpeg = cv2.imencode(
-            '.jpeg', frame, [cv2.IMWRITE_JPEG_QUALITY, 40])[1]
-        return base64.b64encode(jpeg).decode()
+        ret, jpeg = cv2.imencode('.jpg', frame)
+        return jpeg.tobytes()

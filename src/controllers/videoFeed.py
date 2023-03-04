@@ -1,7 +1,6 @@
-import numpy as np
 import models.handTrackingModule as htm
 
-class Video():
+class VideoFeed():
     def __init__(self):
         pass
 
@@ -10,6 +9,8 @@ class Video():
         eraserThickness = 100
         detector = htm.HandDetector(detectionCon=0.85)
         while True:
-            proccessedFrame = camera.get_frame(
+            frame = camera.get_frame(
                 detector, brushThickness, eraserThickness)
-            return proccessedFrame
+            yield(b'--frame\r\n'
+                  b'Content-Type: image/jpeg\r\n\r\n' + 
+                  frame + b'\r\n\r\n')
