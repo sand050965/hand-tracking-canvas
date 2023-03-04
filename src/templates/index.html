@@ -19,6 +19,7 @@
 			href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
 			rel="stylesheet" />
 		<!-- Template Main CSS File -->
+		<link rel="stylesheet" href="../static/css/common.css" />
 		<link rel="stylesheet" href="../static/css/index.css" />
 		<title>Mini Room</title>
 	</head>
@@ -26,7 +27,7 @@
 		<header class="center">
 			<nav class="navbar navbar-grid">
 				<div>
-					<a class="navbar-brand center" href="https://miniroom.online/">
+					<a class="navbar-brand center" href="/">
 						<img
 							src="https://s3.amazonaws.com/www.miniroom.online/images/logo.png"
 							alt=""
@@ -37,41 +38,12 @@
 				<h3 class="center">Hand Tracking Canvas</h3>
 			</nav>
 		</header>
-		<div id="whiteboardContainer" class="whiteboard-container">
-			<div class="palette-container">
-				<div class="palette center">
-					<div></div>
-				</div>
-				<div class="palette center">
-					<div class="red"></div>
-				</div>
-				<div class="palette center">
-					<div class="blue"></div>
-				</div>
-				<div class="palette center">
-					<div class="green"></div>
-				</div>
-				<div class="palette center">
-					<div class="eraser">
-						<img src="../static/images/eraser.png" />
-					</div>
-				</div>
-			</div>
-			<div class="shape-container">
-				<div class="shape center">
-					<div class="draw"><img src="../static/images/draw.png" /></div>
-				</div>
-				<div class="shape center">
-					<div class="circle"></div>
-				</div>
-				<div class="shape center">
-					<div class="rectangle"></div>
-				</div>
-				<div class="shape center">
-					<div class="line"></div>
-				</div>
-			</div>
-			<img id="whiteBoardImg" class="whiteboard-image" src="{{ url_for('index_api.videoFeed') }}"/>
-		</div>
+		<!-- ======= Hero Section ======= -->
+		<section class="hero center">
+			<img src="../static/images/hero-img_index.png"/>
+			<a href="/canvas"><button type="button" class="btn start-btn">Get Started</button></a>
+			<img src="{{ url_for('app_api.videoFeed') }}" class="none" />
+		</section>
+		<!-- End Hero -->
 	</body>
 </html>

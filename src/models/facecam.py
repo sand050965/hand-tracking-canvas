@@ -1,15 +1,11 @@
 import cv2
-import numpy as np
-import globals
+import globals.globals as globals
 
 class Facecam(object):  
     globals.initialize()
     
     def __init__(self):
         self.video = cv2.VideoCapture(0)
-        
-    def __del__(self):
-        self.video.releast()
         
     def get_frame(self, detector, brushThickness, eraserThickness):
         self.video.set(3, 1280)
@@ -53,7 +49,7 @@ class Facecam(object):
                     elif 444 < y1 < 720:
                         globals.shape = "line"  
                 else:
-                    if globals.isDrawingShape:
+                    if fingers[3] and fingers[4] and globals.isDrawingShape:
                         # circle
                         if globals.shape == "circle":
                             globals.isDrawingShape = False
@@ -70,7 +66,7 @@ class Facecam(object):
                         elif globals.shape == "line":
                             globals.isDrawingShape = False
                             cv2.line(globals.imgCanvas, (globals.xpt, globals.ypt), (globals.xp1, globals.yp1),
-                                          globals.drawColor, 5)
+                                        globals.drawColor, 5)
                      
                 cv2.rectangle(frame, (x1, y1 - 25), (x2, y2 + 25),
                               globals.drawColor, cv2.FILLED)

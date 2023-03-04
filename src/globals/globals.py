@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def initialize():
  global xp, yp, xp1, yp1, xpt, ypt, dist, drawColor, shape, isDrawingShape, imgCanvas
  xp, yp = 0, 0

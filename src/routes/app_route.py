@@ -2,13 +2,17 @@ from flask import *
 from controllers.videoFeed import VideoFeed
 from models.facecam import Facecam
 
-index_api = Blueprint("index_api", __name__)
+app_api = Blueprint("app_api", __name__)
 
 
-@index_api.route("/", methods=['GET'])
+@app_api.route("/")
 def index():
     return render_template("index.html")
 
-@index_api.route("/video_feed", methods=['GET'])
+@app_api.route("/canvas")
+def canvas():
+    return render_template("canvas.html")
+
+@app_api.route("/video")
 def videoFeed():
     return Response(VideoFeed.gen(Facecam()), mimetype='multipart/x-mixed-replace; boundary=frame')
