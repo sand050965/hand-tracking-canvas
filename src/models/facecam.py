@@ -50,19 +50,16 @@ class Facecam(object):
                         globals.shape = "line"  
                 else:
                     if fingers[3] and fingers[4] and globals.isDrawingShape:
-                        # circle
                         if globals.shape == "circle":
                             globals.isDrawingShape = False
                             cv2.circle(globals.imgCanvas, (globals.xp1, globals.yp1), globals.dist,
                                     globals.drawColor, 5)
 
-                        # rectangle
                         elif globals.shape == "rectangle":
                             globals.isDrawingShape = False
                             cv2.rectangle(globals.imgCanvas, (globals.xpt, globals.ypt), (globals.xp1, globals.yp1),
                                         globals.drawColor, 5)
 
-                        # oval
                         elif globals.shape == "line":
                             globals.isDrawingShape = False
                             cv2.line(globals.imgCanvas, (globals.xpt, globals.ypt), (globals.xp1, globals.yp1),
@@ -88,13 +85,12 @@ class Facecam(object):
                     cv2.line(globals.imgCanvas, (globals.xp, globals.yp), (x1, y1),
                              globals.drawColor, eraserThickness)
                 else:
-                    # draw
                     if globals.shape == "painter":
                         cv2.line(frame, (globals.xp, globals.yp), (x1, y1),
                                 globals.drawColor, brushThickness)
                         cv2.line(globals.imgCanvas, (globals.xp, globals.yp), (x1, y1),
                                 globals.drawColor, brushThickness)
-                    # circle
+                        
                     elif globals.shape == "circle":
                         globals.isDrawingShape = True
                         dist = int((((yt - y1) ** 2) + ((xt - x1) ** 2)) ** 0.5)
@@ -103,7 +99,6 @@ class Facecam(object):
                         globals.xp1, globals.yp1 = x1, y1
                         globals.dist = dist
                             
-                    # rectangle
                     elif globals.shape == "rectangle":
                         globals.isDrawingShape = True
                         cv2.rectangle(frame, (xt, yt), (x1, y1),
@@ -111,7 +106,6 @@ class Facecam(object):
                         globals.xp1, globals.yp1 = x1, y1
                         globals.xpt, globals.ypt = xt, yt
                             
-                    # oval
                     elif globals.shape == "line":
                         globals.isDrawingShape = True
                         cv2.line(frame, (xt, yt), (x1, y1),
