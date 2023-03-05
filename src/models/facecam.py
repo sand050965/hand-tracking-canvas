@@ -6,7 +6,13 @@ class Facecam(object):
     
     def __init__(self):
         self.video = cv2.VideoCapture(0)
-        
+
+    def pre_get_frame(self):
+        cap = cv2.VideoCapture(0)
+        ret, preFrame = cap.read()
+        ret, jpeg = cv2.imencode('.jpg', preFrame)
+        return jpeg.tobytes()
+    
     def get_frame(self, detector, brushThickness, eraserThickness):
         self.video.set(3, 1280)
         self.video.set(4, 720)

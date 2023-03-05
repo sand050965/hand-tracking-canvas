@@ -4,6 +4,12 @@ class VideoFeed():
     def __init__(self):
         pass
 
+    def pre_gen(camera):
+        frame = camera.pre_get_frame()
+        yield(b'--frame\r\n'
+                b'Content-Type: image/jpeg\r\n\r\n' + 
+                frame + b'\r\n\r\n')
+
     def gen(camera):
         brushThickness = 15
         eraserThickness = 100
