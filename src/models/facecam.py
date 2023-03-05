@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 import globals.globals as globals
 
 class Facecam(object):  
@@ -8,6 +9,7 @@ class Facecam(object):
         self.video = cv2.VideoCapture(0)
 
     def pre_get_frame(self):
+        globals.imgCanvas = np.zeros((720, 1280, 3), np.uint8)
         cap = cv2.VideoCapture(0)
         ret, preFrame = cap.read()
         ret, jpeg = cv2.imencode('.jpg', preFrame)
@@ -53,26 +55,26 @@ class Facecam(object):
                     elif 421 < y1 < 569:
                         globals.shape = "rectangle"
                     elif 444 < y1 < 720:
-                        globals.shape = "line"  
-                else:
-                    if fingers[3] and fingers[4] and globals.isDrawingShape:
-                        if globals.shape == "circle":
-                            globals.isDrawingShape = False
-                            cv2.circle(globals.imgCanvas, (globals.xp1, globals.yp1), globals.dist,
+                        globals.shape = "line" 
+                         
+                if fingers[3] and fingers[4] and globals.isDrawingShape:
+                    if globals.shape == "circle":
+                        globals.isDrawingShape = False
+                        cv2.circle(globals.imgCanvas, (globals.xp1, globals.yp1), globals.dist,
+                                globals.drawColor, 5)
+
+                    elif globals.shape == "rectangle":
+                        globals.isDrawingShape = False
+                        cv2.rectangle(globals.imgCanvas, (globals.xpt, globals.ypt), (globals.xp1, globals.yp1),
                                     globals.drawColor, 5)
 
-                        elif globals.shape == "rectangle":
-                            globals.isDrawingShape = False
-                            cv2.rectangle(globals.imgCanvas, (globals.xpt, globals.ypt), (globals.xp1, globals.yp1),
-                                        globals.drawColor, 5)
-
-                        elif globals.shape == "line":
-                            globals.isDrawingShape = False
-                            cv2.line(globals.imgCanvas, (globals.xpt, globals.ypt), (globals.xp1, globals.yp1),
-                                        globals.drawColor, 5)
-                     
-                cv2.rectangle(frame, (x1, y1 - 25), (x2, y2 + 25),
-                              globals.drawColor, cv2.FILLED)
+                    elif globals.shape == "line":
+                        globals.isDrawingShape = False
+                        cv2.line(globals.imgCanvas, (globals.xpt, globals.ypt), (globals.xp1, globals.yp1),
+                                    globals.drawColor, 5)
+                        
+                    cv2.rectangle(frame, (x1, y1 - 25), (x2, y2 + 25),
+                                globals.drawColor, cv2.FILLED)
 
             # If Drawing Mode (1 fingers are up)
             if not (fingers[1] and fingers[2]):
