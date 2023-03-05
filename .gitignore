@@ -154,3 +154,6 @@ launch.json
 # nginx
 **/private.key
 **/certificate.crt
+
+# note
+pyinstaller.md

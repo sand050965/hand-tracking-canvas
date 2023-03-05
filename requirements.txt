@@ -1,0 +1,5 @@
+mediapipe==0.9.1.0
+opencv-python==4.7.0.72
+numpy==1.24.2
+Flask==2.2.3
+pywebview==4.0.2
