@@ -16,6 +16,15 @@
 	gap: 10vh;
 }
 
+.hero .hero-content {
+	height: 100%;
+}
+
+.hero .hero-img {
+	width: 30vw;
+	height: 30vw;
+}
+
 .hero .start-btn {
 	background-color: #40798c;
 	color: #fff;
