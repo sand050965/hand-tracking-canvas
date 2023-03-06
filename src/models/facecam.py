@@ -20,6 +20,7 @@ class Facecam(object):
         self.video.set(4, 720)
         
         ret, frame = self.video.read()
+        frame = cv2.resize(frame, (1280, 720))
         
         # Find Hand Landmarks
         frame = cv2.flip(frame, 1)
