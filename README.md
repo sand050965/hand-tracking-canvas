@@ -76,35 +76,42 @@ If everything has gone right, you can use different hand gesture modes as demo a
 ## Table of Contents
 
 - [Main Idea and Features](#main-idea-and-features)
+- [Architecture](#architecture)
 - [Technique](#technique)
   - [Key Points](#key-points)
   - [Environment](#environment)
   - [Version Control](#version-control)
-- [Architecture](#architecture)
 - [Contact](#contact)
 
-<br/>
 <br/>
 
 ## Main Idea and Features
 
-- Using opencv to proccess video frame captured from camera, turn it into .jpeg file
+- Using OpenCv to proccess video frame captured from camera, turn it into .jpeg file
 - Using Flask framework to keep sending response to the front end displayed image
-- Using mediapipe to detect hand and finger's tip location, as the image shown below
+- Using MediaPipe to detect hand and finger's tip location, as the image shown below
 
 ![image](https://media.geeksforgeeks.org/wp-content/uploads/20210802154942/HandLandmarks.png)
 
 <br/>
 <br/>
 
+
+## Architecture
+
+- Server Architecture
+
+  ![image](https://github.com/sand050965/Hand-Tracking-Canvas/blob/main/readme/archetecture.png?raw=true)
+
+<br/>
+
 ## Technique
 
 ### Key Points
 
-- mediapipe
-- opencv
+- MediaPipe
+- OpenCv
 
-<br/>
 <br/>
 
 ### Environment
@@ -112,22 +119,11 @@ If everything has gone right, you can use different hand gesture modes as demo a
 - Python Flask
 
 <br/>
-<br/>
 
 ### Version Control
 
 - Git/GitHub
 
-<br/>
-<br/>
-
-## Architecture
-
-- Server Architecture
-
-  ![image]()
-
-<br/>
 <br/>
 
 ## Contact
